@@ -1,12 +1,14 @@
 const express = require('express')
-const { ENGINE_METHOD_ALL } = require('node:constants')
 const app = express()
 
-app.set('view egine', 'pug')
+app.use(express.static(__dirname + '/public'))
+app.set('view engine', 'pug')
+app.set('views', './views')
+
 
 
 app.get('/', (req, res) =>{
-    res.send('<h1>I love coding</h1>')
+    res.render('view')
 })
 
 app.listen(3001, () => console.log('server started at 3001'))
